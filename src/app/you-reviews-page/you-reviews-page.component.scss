@@ -1,0 +1,59 @@
+.like {
+  color: rgba(81, 235, 109, 0.71);
+}
+
+
+.dislike {
+  color: rgba(235, 1, 0, 0.71);
+}
+
+.img-user{
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+
+
+
+.review-text-area {
+  width: 100%;
+  height: 100%;
+  padding-left: 20px;
+
+}
+
+.list-item{
+  height: 100%;
+}
+
+.box{
+  width: 300px;
+  vertical-align: top;
+}
+
+.review{
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.review-render{
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  position: relative;
+  padding-right: 20px;
+}
+
+.review-section{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.reviews-not-found{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+

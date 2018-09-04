@@ -1,0 +1,21 @@
+<div class="container">
+  <mat-list>
+    <h3 mat-subheader>Films</h3>
+    <section *ngFor="let review of reviews" class="review-section">
+      <div class="review-render">
+        <img src="{{review.userPhoto}}" class="img-user">
+        <mat-icon mat-list-icon class="dislike" *ngIf="review.opinion ==='Negativ'">thumb_down</mat-icon>
+        <mat-icon mat-list-icon class="like" *ngIf="review.opinion ==='Positive'">thumb_up</mat-icon>
+        <div class="container review">
+          <p><b>{{review.filmName}}</b></p>
+          {{review.review}}
+        </div>
+      </div>
+    </section>
+  </mat-list>
+</div>
+
+<div class="container reviews-not-found">
+  <span>You haven't any reviews</span>
+</div>
+

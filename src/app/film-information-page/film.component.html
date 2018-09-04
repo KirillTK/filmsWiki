@@ -1,0 +1,25 @@
+<div class="content" *ngIf="!isLoaded">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="container-fluid" *ngIf="isLoaded">
+  <div class="content">
+    <div>
+      <img src="{{film.urlImage}}" class="poster">
+      <div class="content-kino">
+        <img class="kinopoisk flex-item" src="assets/kinopoisk.png">
+        <b class="flex-item">{{film.mark}}</b>
+      </div>
+    </div>
+
+    <div class="item">
+      <h1>{{film.name}}</h1>
+      <div class="desctiption">{{film.description}}</div>
+      <iframe class="video-player" [src]="'https://www.youtube.com/embed/'+ film.videoUrl | safe" frameborder="0"
+              allowfullscreen></iframe>
+    </div>
+  </div>
+  <app-write-review [film]="film" [id]="id"></app-write-review>
+  <app-reviews [idFilm]="id"></app-reviews>
+</div>
+
+

@@ -1,0 +1,29 @@
+<form [formGroup]="documentForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Write review
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="view-container">
+          <mat-form-field class='review-text-area'>
+            <textarea matInput placeholder="Review"  [formControl]="documentForm.controls['review']"  autosize></textarea>
+          </mat-form-field>
+        </div>
+        <mat-radio-group [formControl]="documentForm.controls['opinion']">
+          <mat-radio-button value="Negativ" class="radio-group">
+            <mat-icon class="dislike">thumb_down</mat-icon>
+          </mat-radio-button>
+          <mat-radio-button value="Positive" class="radio-group">
+            <mat-icon class="like">thumb_up</mat-icon>
+          </mat-radio-button>
+        </mat-radio-group>
+        <mat-action-row>
+          <button mat-button color="primary" type="submit" [disabled]="documentForm.invalid">Publish</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</form>
