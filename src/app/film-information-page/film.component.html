@@ -6,7 +6,7 @@
     <div>
       <img src="{{film.urlImage}}" class="poster">
       <div class="content-kino">
-        <img class="kinopoisk flex-item" src="assets/kinopoisk.png">
+        <img class="kinopoisk flex-item" src="assets/kinopoisk.png" alt="kinopoisk">
         <b class="flex-item">{{film.mark}}</b>
       </div>
     </div>
@@ -19,6 +19,7 @@
     </div>
   </div>
   <app-write-review [film]="film" [id]="id"></app-write-review>
+  <app-chart-film [idFilm]="id"></app-chart-film>
   <app-reviews [idFilm]="id"></app-reviews>
 </div>
 

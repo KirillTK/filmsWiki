@@ -12,7 +12,7 @@ export class ListFilmComponent implements OnInit {
 
   filmStr = '';
   filmsList: Film[] = [];
-  private isLoaded = false;
+  public isLoaded = false;
 
   constructor(private filmsService: FilmsService) {
   }

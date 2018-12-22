@@ -1,0 +1,22 @@
+div.container {
+  height: 25px;
+  margin: 50px auto;
+  color: transparent;
+  text-align: center;
+}
+
+div.like {
+  display: inline-block;
+  height: 100%;
+  background: #4CAF50;
+}
+
+div.dislike {
+  display: inline-block;
+  height: 100%;
+  background: #F44336;
+}
+
+div.container:hover {
+  color: white;
+}

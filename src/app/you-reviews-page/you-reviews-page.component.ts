@@ -8,8 +8,8 @@ import {Review} from '../shared/model/review';
   styleUrls: ['./you-reviews-page.component.scss']
 })
 export class YouReviewsPageComponent implements OnInit {
-  private idUser: string;
-  private reviews: Review[];
+  public idUser: string;
+  public reviews: Review[];
 
   constructor(private reviewService: ReviewService) {
     this.idUser = JSON.parse(window.localStorage.getItem('user')).uid;

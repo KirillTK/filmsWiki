@@ -1,0 +1,8 @@
+<div class="container" *ngIf="isLoaded">
+  <div class="like" [ngStyle]="{width: likeWidth}">
+    <span>{{likeWidth}} ({{countPositiveReviews}})</span>
+  </div>
+  <div class="dislike" [ngStyle]="{width: dislikeWidth}">
+    <span>{{dislikeWidth}} ({{countNegativeReviews}})</span>
+  </div>
+</div>

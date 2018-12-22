@@ -29,5 +29,19 @@ export class ReviewService {
     return this.db.collection('reviews', ref => ref.where('userID', '==', userId)).valueChanges();
   }
 
+  getUserPositiveReviews(userId: string) {
+    return this.db.collection('reviews', ref => ref.where('opinion', '==', 'Positive').where('userID', '==', userId)).valueChanges();
+  }
 
+  getAllPositiveReviewsById(idFilm: string) {
+    return this.db.collection('reviews', ref => ref.where('opinion', '==', 'Positive').where('filmID', '==', idFilm)).valueChanges();
+  }
+
+  getUserNegativeReviews(userId: string) {
+    return this.db.collection('reviews', ref => ref.where('opinion', '==', 'Negativ').where('userID', '==', userId)).valueChanges();
+  }
+
+  getAllNegativeReviewsById(idFilm: string) {
+    return this.db.collection('reviews', ref => ref.where('opinion', '==', 'Negativ').where('filmID', '==', idFilm)).valueChanges();
+  }
 }

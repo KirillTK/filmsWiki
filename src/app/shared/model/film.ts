@@ -1,5 +1,5 @@
 export interface Film {
-  desctiption: string;
+  description: string;
   mark: number;
   name: string;
   urlImage: string;

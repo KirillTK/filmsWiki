@@ -9,8 +9,8 @@ import {Film} from '../shared/model/film';
   styleUrls: ['./film.component.scss']
 })
 export class FilmComponent implements OnInit {
-  private id = '';
-  private film: Film;
+  public id = '';
+  public film: Film;
   public isLoaded = false;
 
   constructor(private route: ActivatedRoute, private filmsService: FilmsService) {

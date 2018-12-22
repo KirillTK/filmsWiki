@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import 'hammerjs';
+// import 'hammerjs';
+import { ChartsModule } from 'ng2-charts';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ListFilmComponent} from './list-film/list-film.component';
@@ -22,6 +23,8 @@ import {YoutubeSrcPipe} from './shared/pipe/youtube-src.pipe';
 import {YouReviewsPageComponent} from './you-reviews-page/you-reviews-page.component';
 import {ReviewService} from './shared/service/review.service';
 import { WriteReviewComponent } from './film-information-page/write-review/write-review.component';
+import { ChartComponent } from './you-reviews-page/chart-component/chart/chart.component';
+import { ChartFilmComponent } from './film-information-page/chart-film/chart-film.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { WriteReviewComponent } from './film-information-page/write-review/write
     ReviewsComponent,
     ReviewTextAreaComponent,
     YouReviewsPageComponent,
-    WriteReviewComponent
+    WriteReviewComponent,
+    ChartComponent,
+    ChartFilmComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,8 @@ import { WriteReviewComponent } from './film-information-page/write-review/write
     AppRoutingModule,
     MaterialComponentModule,
     ReactiveFormsModule,
-    AutosizeModule
+    AutosizeModule,
+    ChartsModule
   ],
   providers: [FilmsService, AuthService, ReviewService],
   bootstrap: [AppComponent]
