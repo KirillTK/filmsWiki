@@ -22,4 +22,9 @@ export class YouReviewsPageComponent implements OnInit {
       });
   }
 
+
+  deleteReview() {
+
+  }
+
 }

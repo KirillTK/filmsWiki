@@ -11,6 +11,11 @@
           <p><b>{{review.filmName}}</b></p>
           {{review.review}}
         </div>
+
+        <div>
+          <mat-icon mat-list-icon class="btn edit-icon">edit</mat-icon>
+          <mat-icon mat-list-icon class="btn delete-icon" (click)="deleteReview()">delete</mat-icon>
+        </div>
       </div>
     </section>
   </mat-list>

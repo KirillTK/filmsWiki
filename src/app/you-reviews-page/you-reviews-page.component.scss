@@ -7,6 +7,22 @@
   color: rgba(235, 1, 0, 0.71);
 }
 
+
+.btn {
+  font-size: 1.5em;
+}
+.btn:active {
+  transform: scale(0.9);
+}
+
+.delete-icon {
+  color: rgba(235, 1, 0, 0.71);
+}
+
+.edit-icon {
+  color: rgba(27, 144, 235, 0.71);
+}
+
 .img-user{
   width: 32px;
   height: 32px;
@@ -47,7 +63,8 @@
 
 .review-section{
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid #e2e2e2
 }
 
 .reviews-not-found{

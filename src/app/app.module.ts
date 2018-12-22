@@ -25,6 +25,7 @@ import {ReviewService} from './shared/service/review.service';
 import { WriteReviewComponent } from './film-information-page/write-review/write-review.component';
 import { ChartComponent } from './you-reviews-page/chart-component/chart/chart.component';
 import { ChartFilmComponent } from './film-information-page/chart-film/chart-film.component';
+import {ChartDynamicComponent} from './you-reviews-page/chart-dynamic/chart-dynamic.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ChartFilmComponent } from './film-information-page/chart-film/chart-fil
     YouReviewsPageComponent,
     WriteReviewComponent,
     ChartComponent,
-    ChartFilmComponent
+    ChartFilmComponent,
+    ChartDynamicComponent
   ],
   imports: [
     BrowserModule,
