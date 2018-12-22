@@ -33,7 +33,6 @@ export class ListFilmComponent implements OnInit {
         this.genres = _.uniq(this.filmsList.map(film => film.genre));
 
         this.copyFilmsList = this.filmsList;
-        console.log(this.years, this.genres);
         this.isLoaded = true;
       });
   }
