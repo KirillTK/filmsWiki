@@ -6,4 +6,5 @@ export interface Film {
   videoUrl: string;
   year: number;
   id?: string;
+  genre: string;
 }

@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FilmsService} from '../shared/service/films.service';
 import {Film} from '../shared/model/film';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-list-film',
@@ -12,6 +13,12 @@ export class ListFilmComponent implements OnInit {
 
   filmStr = '';
   filmsList: Film[] = [];
+  copyFilmsList: Film[] = [];
+  years: number[] = [];
+  genres: string[] = [];
+
+  @ViewChild('yearElement') yearElement: ElementRef;
+  @ViewChild('genreElement') genreElement: ElementRef;
   public isLoaded = false;
 
   constructor(private filmsService: FilmsService) {
@@ -21,7 +28,38 @@ export class ListFilmComponent implements OnInit {
     this.filmsService.getFilmList()
       .subscribe((data) => {
         this.filmsList = data;
+
+        this.years = _.uniq(this.filmsList.map(film => film.year));
+        this.genres = _.uniq(this.filmsList.map(film => film.genre));
+
+        this.copyFilmsList = this.filmsList;
+        console.log(this.years, this.genres);
         this.isLoaded = true;
       });
+  }
+
+
+  onChangeYearFilter(data, field) {
+    const genre = this.genreElement.value;
+    if (genre) {
+      this.copyFilmsList = this.filmsList.filter((film) => film[field] === data && film['genre'] === genre);
+    } else {
+      this.copyFilmsList = this.filmsList.filter((film) => film[field] === data);
+    }
+  }
+
+  onChangeGenreFilter(data, field) {
+    const year = this.yearElement.value;
+    if (year) {
+      this.copyFilmsList = this.filmsList.filter((film) => film[field] === data && film['year'] === year);
+    } else {
+      this.copyFilmsList = this.filmsList.filter((film) => film[field] === data);
+    }
+  }
+
+  resetFilter() {
+    this.yearElement.value = '';
+    this.genreElement.value = '';
+    this.copyFilmsList = this.filmsList;
   }
 }

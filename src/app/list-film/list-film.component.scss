@@ -14,8 +14,13 @@
 .filter-items {
   display: grid;
   justify-content: center;
+  justify-items: center;
   align-items: center;
-  grid: 50px / repeat(2, 200px);
+  grid: 75px / repeat(2, 200px);
+}
+
+.filter-item {
+  width: 150px;
 }
 
 .cards {

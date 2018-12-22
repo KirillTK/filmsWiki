@@ -10,7 +10,8 @@ import {
   MatMenuModule,
   MatExpansionModule,
   MatRadioModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatDatepickerModule, MatNativeDateModule, MatSelectModule
 } from '@angular/material';
 import {NgModule} from '@angular/core';
 
@@ -27,7 +28,10 @@ import {NgModule} from '@angular/core';
     MatMenuModule,
     MatExpansionModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   exports: [
     MatInputModule,
@@ -41,7 +45,10 @@ import {NgModule} from '@angular/core';
     MatMenuModule,
     MatExpansionModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ]
 })
 export class MaterialComponentModule {
