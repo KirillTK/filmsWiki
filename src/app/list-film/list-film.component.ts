@@ -1,7 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FilmsService} from '../shared/service/films.service';
 import {Film} from '../shared/model/film';
+import {MatSelect} from "@angular/material";
 import * as _ from 'lodash';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-list-film',
@@ -17,8 +19,8 @@ export class ListFilmComponent implements OnInit {
   years: number[] = [];
   genres: string[] = [];
 
-  @ViewChild('yearElement') yearElement: ElementRef;
-  @ViewChild('genreElement') genreElement: ElementRef;
+  @ViewChild('yearElement') yearElement: MatSelect;
+  @ViewChild('genreElement') genreElement: MatSelect;
   public isLoaded = false;
 
   constructor(private filmsService: FilmsService) {
