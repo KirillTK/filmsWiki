@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ReviewService} from '../../../shared/service/review.service';
 import {st} from '@angular/core/src/render3';
+import {Review} from '../../../shared/model/review';
 
 @Component({
   selector: 'app-chart',
@@ -11,33 +12,34 @@ export class ChartComponent implements OnInit {
   public doughnutChartLabels: string[] = ['Positive', 'Negative'];
   public doughnutChartData: number[] = [];
   public doughnutChartType = 'doughnut';
-  public countPositiveReviews = 0;
-  public countNegativeReviews = 0;
+  private countPositiveReviews = 0;
+  private countNegativeReviews = 0;
   public isLoaded = false;
   public idUser: string;
+  private arrayReviews = [];
 
   constructor(private reviews: ReviewService) {
+  }
+
+  ngOnInit() {
     this.idUser = JSON.parse(window.localStorage.getItem('user')).uid;
-    this.reviews.getUserPositiveReviews(this.idUser).subscribe((positiveReviews) => {
-      this.countPositiveReviews = positiveReviews.length;
-    });
-    this.reviews.getUserNegativeReviews(this.idUser).subscribe((negativeReviews) => {
-      this.countNegativeReviews = negativeReviews.length;
+    this.reviews.getAllUserReviews(this.idUser).subscribe( (review) => {
+      this.arrayReviews = review;
+      console.log(this.arrayReviews);
+      this.countNegativeReviews = this.getCountNegativeReviews(this.arrayReviews);
+      this.countPositiveReviews = this.getCountPositiveReviews(this.arrayReviews);
       this.doughnutChartData.push(this.countPositiveReviews);
       this.doughnutChartData.push(this.countNegativeReviews);
       this.isLoaded = true;
     });
   }
 
-  ngOnInit() {
+  private getCountPositiveReviews(reviews: Review[]) {
+    return reviews.filter(review => review.opinion === 'Positive').length;
   }
 
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
+  private getCountNegativeReviews(reviews: Review[]) {
+    return reviews.filter(review => review.opinion === 'Negativ').length;
   }
 
 }
