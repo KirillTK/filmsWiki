@@ -5,6 +5,26 @@
   justify-content: center;
 }
 
+.filter {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px 0 50px 0;
+}
+
+.filter-items {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid: 50px / repeat(2, 200px);
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .item {
   margin: 0 5px 20px;
   width: 15%;
