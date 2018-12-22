@@ -1,6 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ReviewService} from '../../../shared/service/review.service';
-import {st} from '@angular/core/src/render3';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Review} from '../../../shared/model/review';
 
 @Component({
@@ -8,31 +6,32 @@ import {Review} from '../../../shared/model/review';
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
-export class ChartComponent implements OnInit {
+export class ChartComponent implements OnInit, OnChanges {
+
   public doughnutChartLabels: string[] = ['Positive', 'Negative'];
   public doughnutChartData: number[] = [];
   public doughnutChartType = 'doughnut';
   private countPositiveReviews = 0;
   private countNegativeReviews = 0;
   public isLoaded = false;
-  public idUser: string;
-  private arrayReviews = [];
 
-  constructor(private reviews: ReviewService) {
+  @Input() reviewsData: Review[];
+
+  constructor() {
   }
 
-  ngOnInit() {
-    this.idUser = JSON.parse(window.localStorage.getItem('user')).uid;
-    this.reviews.getAllUserReviews(this.idUser).subscribe( (review) => {
-      this.arrayReviews = review;
-      console.log(this.arrayReviews);
-      this.countNegativeReviews = this.getCountNegativeReviews(this.arrayReviews);
-      this.countPositiveReviews = this.getCountPositiveReviews(this.arrayReviews);
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.reviewsData) {
+      this.countNegativeReviews = this.getCountNegativeReviews(this.reviewsData);
+      this.countPositiveReviews = this.getCountPositiveReviews(this.reviewsData);
       this.doughnutChartData.push(this.countPositiveReviews);
       this.doughnutChartData.push(this.countNegativeReviews);
       this.isLoaded = true;
-    });
+    }
+
   }
+
+  ngOnInit() {}
 
   private getCountPositiveReviews(reviews: Review[]) {
     return reviews.filter(review => review.opinion === 'Positive').length;

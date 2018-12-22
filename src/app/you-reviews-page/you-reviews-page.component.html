@@ -1,5 +1,5 @@
 <div class="container">
-  <app-chart></app-chart>
+  <app-chart [reviewsData]="reviews" ></app-chart>
   <mat-list>
     <h3 mat-subheader>Films</h3>
     <section *ngFor="let review of reviews" class="review-section">
@@ -14,9 +14,5 @@
       </div>
     </section>
   </mat-list>
-</div>
-
-<div class="container reviews-not-found">
-  <span>You haven't any reviews</span>
 </div>
 
