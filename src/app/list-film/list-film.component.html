@@ -10,7 +10,7 @@
 </div>
 
 
-<div *ngIf="isLoaded">
+<div *ngIf="isLoaded" class="container">
 
   <section class="filter">
     <mat-accordion>
@@ -52,7 +52,7 @@
   <div class="cards" >
     <mat-card class="item" *ngFor="let film of copyFilmsList | filterFilm: filmStr" [routerLink]="['film',film.id]">
       <mat-card-header>
-        <mat-card-title><b>{{film.name}}</b></mat-card-title>
+        <mat-card-title class="title-film"><b>{{film.name}}</b></mat-card-title>
       </mat-card-header>
       <img mat-card-image src="{{film.urlImage}}" class="img-container">
     </mat-card>
