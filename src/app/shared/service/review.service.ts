@@ -22,6 +22,10 @@ export class ReviewService {
     return this.db.collection('reviews', ref => ref.limit(limit).where('filmID', '==', idFilm)).valueChanges();
   }
 
+  getReviewByIdFilm(idFilm:string): Observable<any[]> {
+    return this.db.collection('reviews', ref => ref.where('filmID', '==', idFilm)).valueChanges();
+  }
+
 
   addReview(review: Review) {
     this.reviewCollection.add(review);
