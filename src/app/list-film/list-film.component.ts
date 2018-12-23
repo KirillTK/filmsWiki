@@ -31,7 +31,7 @@ export class ListFilmComponent implements OnInit {
       .subscribe((data) => {
         this.filmsList = data;
 
-        this.years = _.uniq(this.filmsList.map(film => film.year));
+        this.years = _.uniq(this.filmsList.map(film => film.year)).sort((a, b) => b - a);
         this.genres = _.uniq(this.filmsList.map(film => film.genre));
 
         this.copyFilmsList = this.filmsList;

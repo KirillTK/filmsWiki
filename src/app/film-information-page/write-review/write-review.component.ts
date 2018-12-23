@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterContentChecked, AfterViewChecked, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Review} from '../../shared/model/review';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {FilmsService} from '../../shared/service/films.service';
@@ -11,7 +11,8 @@ import {ReviewService} from '../../shared/service/review.service';
   templateUrl: './write-review.component.html',
   styleUrls: ['./write-review.component.scss']
 })
-export class WriteReviewComponent implements OnInit {
+export class WriteReviewComponent implements OnInit, AfterViewChecked {
+
   @Input() id = '';
   @Input() film: Film;
   public documentForm: FormGroup;
@@ -23,6 +24,8 @@ export class WriteReviewComponent implements OnInit {
     Validators.required
   ]);
 
+  public isAuth: boolean;
+
   constructor(private route: ActivatedRoute, private filmsService: FilmsService,
               private formBuilder: FormBuilder, private reviewService: ReviewService) {
     this.documentForm = this.formBuilder.group({
@@ -32,6 +35,13 @@ export class WriteReviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    const user = JSON.parse(window.localStorage.getItem('user'));
+    this.isAuth = !!user;
+  }
+
+  ngAfterViewChecked(): void {
+    const user = JSON.parse(window.localStorage.getItem('user'));
+    this.isAuth = !!user;
   }
 
   onSubmit() {
