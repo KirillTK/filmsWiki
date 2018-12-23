@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>AShdjkl</h1>
+<div mat-dialog-content>
+  <p>Update review</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="textReview">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="textReview" cdkFocusInitial>Ok</button>
+</div>

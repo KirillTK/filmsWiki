@@ -1,10 +1,12 @@
 .like {
   color: rgba(81, 235, 109, 0.71);
+  margin-right: 10px;
 }
 
 
 .dislike {
   color: rgba(235, 1, 0, 0.71);
+  margin-right: 10px;
 }
 
 
@@ -28,8 +30,6 @@
   height: 32px;
   margin-right: 10px;
 }
-
-
 
 .review-text-area {
   width: 100%;
@@ -74,3 +74,12 @@
   margin-bottom: 30px;
 }
 
+//
+//.review-inrormation {
+//  display: flex;
+//  flex-direction: row;
+//}
+//
+//.review-section {
+//  display: block;
+//}

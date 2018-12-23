@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ReviewService} from '../shared/service/review.service';
 import {Review} from '../shared/model/review';
+import {MatDialog} from '@angular/material';
+import {DialogReview} from './review-dialog/review-dialog.component';
 
 @Component({
   selector: 'app-you-reviews-page',
@@ -11,7 +13,7 @@ export class YouReviewsPageComponent implements OnInit {
   public idUser: string;
   public reviews: Review[];
 
-  constructor(private reviewService: ReviewService) {
+  constructor(private reviewService: ReviewService, public dialog: MatDialog) {
     this.idUser = JSON.parse(window.localStorage.getItem('user')).uid;
   }
 
@@ -19,7 +21,6 @@ export class YouReviewsPageComponent implements OnInit {
     this.reviewService.getAllUserReviews(this.idUser)
       .subscribe((data) => {
         this.reviews = data;
-        console.log('initLength', this.reviews.length)
       });
   }
 
@@ -30,12 +31,22 @@ export class YouReviewsPageComponent implements OnInit {
     this.reviewService.getAllUserReviews(this.idUser)
       .subscribe((data) => {
         this.reviews = data;
-        console.log('thisLength', this.reviews.length)
       });
   }
 
-  editReview(e,v, review: Review) {
-    console.log('Edit event', e, 'elem', v);
-  }
+  openDialog(event, reviewText , review: Review) {
+    let copyReview = review;
+    const dialogRef = this.dialog.open(DialogReview, {
+      width: '250px',
+      data: review
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result){
+        review.review = result;
+        console.log(result);
+      }
+    });
+  }
 }

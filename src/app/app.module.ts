@@ -26,6 +26,7 @@ import { WriteReviewComponent } from './film-information-page/write-review/write
 import { ChartComponent } from './you-reviews-page/chart-component/chart/chart.component';
 import { ChartFilmComponent } from './film-information-page/chart-film/chart-film.component';
 import {ChartDynamicComponent} from './you-reviews-page/chart-dynamic/chart-dynamic.component';
+import {DialogReview} from './you-reviews-page/review-dialog/review-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {ChartDynamicComponent} from './you-reviews-page/chart-dynamic/chart-dyna
     WriteReviewComponent,
     ChartComponent,
     ChartFilmComponent,
-    ChartDynamicComponent
+    ChartDynamicComponent,
+    DialogReview
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,10 @@ import {ChartDynamicComponent} from './you-reviews-page/chart-dynamic/chart-dyna
     ChartsModule
   ],
   providers: [FilmsService, AuthService, ReviewService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogReview
+  ]
 })
 export class AppModule {
 }

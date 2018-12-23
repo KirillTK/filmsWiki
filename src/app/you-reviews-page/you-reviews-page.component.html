@@ -2,6 +2,8 @@
   <app-chart [reviewsData]="reviews" ></app-chart>
   <mat-list>
     <h3 mat-subheader>Films</h3>
+
+
     <section *ngFor="let review of reviews" class="review-section" #reviewItem>
       <div class="review-render">
         <img src="{{review.userPhoto}}" class="img-user">
@@ -14,11 +16,32 @@
         </div>
 
         <div>
-          <mat-icon mat-list-icon class="btn edit-icon" (click)="editReview($event, reviewItem, review)">edit</mat-icon>
-          <mat-icon mat-list-icon class="btn delete-icon" (click)="deleteReview($event, reviewItem, review)">delete</mat-icon>
+          <mat-icon mat-list-icon class="btn edit-icon" (click)="openDialog($event, reviewItem, review)">edit</mat-icon>
+          <mat-icon mat-list-icon class="btn delete-icon" (click)="deleteReview($event, reviewText, review)">delete</mat-icon>
         </div>
       </div>
     </section>
+
+    <!--<mat-list-item role="listitem" *ngFor="let review of reviews">-->
+      <!--<section class="review-inrormation">-->
+        <!--<img src="{{review.userPhoto}}" class="img-user">-->
+        <!--<mat-icon mat-list-icon class="dislike" *ngIf="review.opinion ==='Negativ'">thumb_down</mat-icon>-->
+        <!--<mat-icon mat-list-icon class="like" *ngIf="review.opinion ==='Positive'">thumb_up</mat-icon>-->
+        <!--<span>{{review.filmName}}</span>-->
+      <!--</section>-->
+
+      <!--<div class="review-section">-->
+        <!--<mat-form-field class='review-text-area'>-->
+          <!--<textarea matInput placeholder="Review" autosize [value]="review.review"></textarea>-->
+        <!--</mat-form-field>-->
+      <!--</div>-->
+
+    <!--</mat-list-item>-->
+
+
+
+
+
   </mat-list>
 </div>
 
