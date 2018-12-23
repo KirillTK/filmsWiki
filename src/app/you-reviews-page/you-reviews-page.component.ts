@@ -45,6 +45,7 @@ export class YouReviewsPageComponent implements OnInit {
       console.log('The dialog was closed');
       if (result){
         review.review = result;
+        this.reviewService.updateReview(review);
         console.log(result);
       }
     });

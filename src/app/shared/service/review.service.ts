@@ -50,6 +50,11 @@ export class ReviewService {
     reviewElem.delete();
   }
 
+  updateReview(review: Review) {
+    const reviewElem = this.db.doc(`reviews/${review.id}`);
+    reviewElem.update({review: review.review});
+  }
+
   // Remove this methods
 
   getAllPositiveReviewsById(idFilm: string) {
