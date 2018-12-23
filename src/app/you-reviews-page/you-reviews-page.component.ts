@@ -37,12 +37,11 @@ export class YouReviewsPageComponent implements OnInit {
   openDialog(event, reviewText , review: Review) {
     let copyReview = review;
     const dialogRef = this.dialog.open(DialogReview, {
-      width: '250px',
+      width: '500px',
       data: review
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if (result){
         review.review = result;
         this.reviewService.updateReview(review);
