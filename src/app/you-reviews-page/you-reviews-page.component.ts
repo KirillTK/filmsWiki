@@ -19,12 +19,23 @@ export class YouReviewsPageComponent implements OnInit {
     this.reviewService.getAllUserReviews(this.idUser)
       .subscribe((data) => {
         this.reviews = data;
+        console.log('initLength', this.reviews.length)
       });
   }
 
 
-  deleteReview() {
+  deleteReview(event, reviewItem, review: Review) {
+    this.reviewService.removeReview(review);
+    reviewItem.remove();
+    this.reviewService.getAllUserReviews(this.idUser)
+      .subscribe((data) => {
+        this.reviews = data;
+        console.log('thisLength', this.reviews.length)
+      });
+  }
 
+  editReview(e,v, review: Review) {
+    console.log('Edit event', e, 'elem', v);
   }
 
 }

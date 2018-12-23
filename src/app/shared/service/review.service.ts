@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/index';
 import {Review} from '../model/review';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
+import {map} from "rxjs/internal/operators";
+import {Film} from "../model/film";
 
 @Injectable()
 export class ReviewService {
@@ -25,8 +27,27 @@ export class ReviewService {
     this.reviewCollection.add(review);
   }
 
+  // getAllUserReviews(userId: string): Observable<any[]> {
+  //   return this.db.collection('reviews', ref => ref.where('userID', '==', userId)).valueChanges();
+  // }
+
   getAllUserReviews(userId: string): Observable<any[]> {
-    return this.db.collection('reviews', ref => ref.where('userID', '==', userId)).valueChanges();
+    return this.db.collection('reviews', ref => ref.where('userID', '==', userId))
+      .snapshotChanges()
+      .pipe(
+        map(actions => {
+          return actions.map(a => {
+            const data = a.payload.doc.data() as Film;
+            const id = a.payload.doc.id;
+            return {id, ...data};
+          });
+        })
+      );
+  }
+
+  removeReview(review: Review){
+    const reviewElem = this.db.doc(`reviews/${review.id}`);
+    reviewElem.delete();
   }
 
   // Remove this methods

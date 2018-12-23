@@ -2,19 +2,20 @@
   <app-chart [reviewsData]="reviews" ></app-chart>
   <mat-list>
     <h3 mat-subheader>Films</h3>
-    <section *ngFor="let review of reviews" class="review-section">
+    <section *ngFor="let review of reviews" class="review-section" #reviewItem>
       <div class="review-render">
         <img src="{{review.userPhoto}}" class="img-user">
         <mat-icon mat-list-icon class="dislike" *ngIf="review.opinion ==='Negativ'">thumb_down</mat-icon>
         <mat-icon mat-list-icon class="like" *ngIf="review.opinion ==='Positive'">thumb_up</mat-icon>
+
         <div class="container review">
           <p><b>{{review.filmName}}</b></p>
-          {{review.review}}
+          <p #reviewText>{{review.review}}</p>
         </div>
 
         <div>
-          <mat-icon mat-list-icon class="btn edit-icon">edit</mat-icon>
-          <mat-icon mat-list-icon class="btn delete-icon" (click)="deleteReview()">delete</mat-icon>
+          <mat-icon mat-list-icon class="btn edit-icon" (click)="editReview($event, reviewItem, review)">edit</mat-icon>
+          <mat-icon mat-list-icon class="btn delete-icon" (click)="deleteReview($event, reviewItem, review)">delete</mat-icon>
         </div>
       </div>
     </section>

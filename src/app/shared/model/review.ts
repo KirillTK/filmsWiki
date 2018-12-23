@@ -1,4 +1,5 @@
 export interface Review {
+  id?: string;
   filmID: string;
   opinion: string;
   review: string;

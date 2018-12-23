@@ -22,8 +22,10 @@ export class ChartComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.reviewsData) {
+      console.log('sakdmasd', this.reviewsData);
       this.countNegativeReviews = this.getCountNegativeReviews(this.reviewsData);
       this.countPositiveReviews = this.getCountPositiveReviews(this.reviewsData);
+      this.doughnutChartData = [];
       this.doughnutChartData.push(this.countPositiveReviews);
       this.doughnutChartData.push(this.countNegativeReviews);
       this.isLoaded = true;
