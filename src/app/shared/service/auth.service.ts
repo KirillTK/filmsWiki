@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import {Observable} from "rxjs/index";
-import {Router} from "@angular/router";
+import {map} from "rxjs/internal/operators";
 
 
 @Injectable()
@@ -10,41 +10,41 @@ export class AuthService {
 
   user: Observable<firebase.User>;
 
-  constructor(public afAuth: AngularFireAuth, private router: Router) {
-    this.user = afAuth.authState;
 
+  uid =  this.afAuth.authState.pipe( map(authState => {
+    if (!authState.uid){
+      return null;
+    } else  {
+      return authState.uid;
+    }
+  }));
+
+  constructor(public afAuth: AngularFireAuth) {
+    this.user = afAuth.authState;
   }
 
-  // signInWithTwitter() {
-  //   return this._firebaseAuth.auth.signInWithPopup(
-  //     new firebase.auth.TwitterAuthProvider()
-  //   );
-  // }
-  //
-  // signInWithFacebook() {
-  //   return this._firebaseAuth.auth.signInWithPopup(
-  //     new firebase.auth.FacebookAuthProvider()
-  //   );
-  // }
+
 
   loginInWithGoogle() {
-    // return this._firebaseAuth.auth.signInWithPopup(
-    //   new firebase.auth.GoogleAuthProvider()
-    // );
-    const provider = new firebase.auth.GoogleAuthProvider();
-    this.afAuth.auth.signInWithPopup(provider);
+    // this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
+    return new Promise<any>((resolve, reject) => {
+      let provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope('profile');
+      provider.addScope('email');
+      this.afAuth.auth
+        .signInWithPopup(provider)
+        .then(res => {
+          resolve(res);
+        })
+    })
   }
-
-  // isLoggedIn() {
-  //   if (this.userDetails == null) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
 
   logout() {
     window.localStorage.removeItem('user');
+    this.afAuth.auth.signOut();
+  }
+
+  doLogout(){
     this.afAuth.auth.signOut();
   }
 
