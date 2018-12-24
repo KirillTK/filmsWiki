@@ -10,7 +10,7 @@ export class AuthService {
 
   user: Observable<firebase.User>;
 
-  constructor(public afAuth: AngularFireAuth) {
+  constructor(public afAuth: AngularFireAuth, private router: Router) {
     this.user = afAuth.authState;
   }
 
@@ -30,6 +30,7 @@ export class AuthService {
   logout() {
     window.localStorage.removeItem('user');
     this.afAuth.auth.signOut();
+    this.router.navigate(['/'])
   }
 
 }
