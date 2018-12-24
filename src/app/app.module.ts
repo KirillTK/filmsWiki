@@ -27,6 +27,7 @@ import { ChartComponent } from './you-reviews-page/chart-component/chart/chart.c
 import { ChartFilmComponent } from './film-information-page/chart-film/chart-film.component';
 import {ChartDynamicComponent} from './you-reviews-page/chart-dynamic/chart-dynamic.component';
 import {DialogReview} from './you-reviews-page/review-dialog/review-dialog.component';
+import { InfoPageComponent } from './info-page/info-page/info-page.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {DialogReview} from './you-reviews-page/review-dialog/review-dialog.compo
     ChartComponent,
     ChartFilmComponent,
     ChartDynamicComponent,
-    DialogReview
+    DialogReview,
+    InfoPageComponent
   ],
   imports: [
     BrowserModule,
