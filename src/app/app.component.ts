@@ -11,6 +11,7 @@ export class AppComponent {
 
   user: any;
   public authenticated = false;
+  public isWaiting = false;
 
   constructor(private a: AngularFireAuth, private afAuth: AuthService) {
     this.a.authState
@@ -19,14 +20,18 @@ export class AppComponent {
           this.user = authentic;
           this.authenticated = true;
           window.localStorage.setItem('user', JSON.stringify(this.user));
-          console.log(this.user);
         }
       });
   }
 
   login() {
-    this.afAuth.loginInWithGoogle();
     this.authenticated = true;
+    this.isWaiting = true;
+    this.afAuth.loginInWithGoogle().then(() => {
+      this.isWaiting = false;
+    }).catch( ()=> {
+      this.authenticated = false;
+    });
   }
 
   logOut() {

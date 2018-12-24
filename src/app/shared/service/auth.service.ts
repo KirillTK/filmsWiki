@@ -10,38 +10,22 @@ export class AuthService {
 
   user: Observable<firebase.User>;
 
-  constructor(public afAuth: AngularFireAuth, private router: Router) {
+  constructor(public afAuth: AngularFireAuth) {
     this.user = afAuth.authState;
-
   }
-
-  // signInWithTwitter() {
-  //   return this._firebaseAuth.auth.signInWithPopup(
-  //     new firebase.auth.TwitterAuthProvider()
-  //   );
-  // }
-  //
-  // signInWithFacebook() {
-  //   return this._firebaseAuth.auth.signInWithPopup(
-  //     new firebase.auth.FacebookAuthProvider()
-  //   );
-  // }
 
   loginInWithGoogle() {
-    // return this._firebaseAuth.auth.signInWithPopup(
-    //   new firebase.auth.GoogleAuthProvider()
-    // );
-    const provider = new firebase.auth.GoogleAuthProvider();
-    this.afAuth.auth.signInWithPopup(provider);
+    return new Promise<any>((resolve, reject) => {
+      let provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope('profile');
+      provider.addScope('email');
+      this.afAuth.auth
+        .signInWithPopup(provider)
+        .then(res => {
+          resolve(res);
+        })
+    })
   }
-
-  // isLoggedIn() {
-  //   if (this.userDetails == null) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
 
   logout() {
     window.localStorage.removeItem('user');

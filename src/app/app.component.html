@@ -2,7 +2,9 @@
   <mat-toolbar-row>
     <span [routerLink]="['/']">FilmsWiki</span>
     <span class="toolbar-spacer"></span>
-    <button mat-mini-fab color="accent" class="button-login" *ngIf="!authenticated" (click)="login()">Login</button>
+    <!--<button mat-mini-fab color="accent" class="button-login" *ngIf="!authenticated" (click)="login()">Login</button>-->
+    <img src="../assets/login.jpg" class="rounded-circle img-user" *ngIf="!authenticated" (click)="login()">
+    <img src="../assets/waiting.jpg" class="rounded-circle img-user" *ngIf="isWaiting">
 
     <div *ngIf="afAuth.user | async as user">
       <img [src]="user.photoURL" class="rounded-circle img-user" *ngIf="authenticated" (click)="logOut() ">
