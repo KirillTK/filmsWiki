@@ -1,14 +1,14 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import {Review} from "../../shared/model/review";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {Review} from '../../shared/model/review';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-review-dialog',
   templateUrl: './review-dialog.component.html',
   styleUrls: ['./review-dialog.component.scss']
 })
-export class DialogReview{
+export class DialogReview {
 
   public textReview: string;
 
