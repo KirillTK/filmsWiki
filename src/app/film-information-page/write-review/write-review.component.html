@@ -1,4 +1,4 @@
-<form [formGroup]="documentForm" (ngSubmit)="onSubmit()" *ngIf="isAuth">
+<form [formGroup]="documentForm" (ngSubmit)="onSubmit()" *ngIf="isAuth === true && isAlreadyWrote === false">
   <div class="container">
     <mat-accordion>
       <mat-expansion-panel>

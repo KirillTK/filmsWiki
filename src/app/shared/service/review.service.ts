@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/index';
+import {Observable} from 'rxjs';
 import {Review} from '../model/review';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
-import {map} from "rxjs/internal/operators";
-import {Film} from "../model/film";
+import {map} from 'rxjs/internal/operators';
+import {Film} from '../model/film';
 
 @Injectable()
 export class ReviewService {
@@ -22,12 +22,16 @@ export class ReviewService {
     return this.db.collection('reviews', ref => ref.limit(limit).where('filmID', '==', idFilm)).valueChanges();
   }
 
-  getReviewByIdFilm(idFilm:string): Observable<any[]> {
+  getReviewByIdFilm(idFilm: string): Observable<any[]> {
     return this.db.collection('reviews', ref => ref.where('filmID', '==', idFilm)).valueChanges();
   }
 
 
   addReview(review: Review) {
+    // this.db.firestore.doc('/reviews/EETvQMPobloINaHioRX6').get()
+    //   .then( docSnapshot => {
+    //       console.log('docSnapshot', docSnapshot);
+    //   });
     this.reviewCollection.add(review);
   }
 
@@ -49,7 +53,7 @@ export class ReviewService {
       );
   }
 
-  removeReview(review: Review){
+  removeReview(review: Review) {
     const reviewElem = this.db.doc(`reviews/${review.id}`);
     reviewElem.delete();
   }

@@ -3,14 +3,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {FilmComponent} from './film-information-page/film.component';
 import {ListFilmComponent} from './list-film/list-film.component';
 import {YouReviewsPageComponent} from './you-reviews-page/you-reviews-page.component';
-import {InfoPageComponent} from "./info-page/info-page/info-page.component";
 
 
 const routes: Routes = [
   {path: '', component: ListFilmComponent},
   {path: 'film/:id', component: FilmComponent},
-  {path: 'reviews', component: YouReviewsPageComponent},
-  {path: 'information', component: InfoPageComponent}
+  {path: 'reviews', component: YouReviewsPageComponent}
 ];
 
 

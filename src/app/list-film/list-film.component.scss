@@ -29,6 +29,7 @@
   flex-wrap: wrap;
   width: 1200px;
   margin: 0 auto;
+  margin-left: 20px;
 
   .title-film {
     width: 200px;
@@ -45,6 +46,7 @@
   max-height: 5%;
   margin-bottom: 30px;
   margin-right: 20px;
+  outline: none;
 }
 
 .item:hover {

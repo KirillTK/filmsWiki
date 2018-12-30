@@ -15,9 +15,12 @@ export class WriteReviewComponent implements OnInit, AfterViewChecked {
 
   @Input() id = '';
   @Input() film: Film;
+  private reviews: Review[];
   public documentForm: FormGroup;
+  public isAlreadyWrote: boolean;
   private reviewControl = new FormControl('', [
     Validators.required,
+    Validators.minLength(10),
     Validators.maxLength(1000)
   ]);
   private opinionMovieControl = new FormControl('', [
@@ -35,8 +38,17 @@ export class WriteReviewComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
+    this.reviewService.getReviewByIdFilm(this.id).subscribe( reviews => {
+      this.reviews = reviews;
+      console.log(this.ifReviewIsExist());
+      this.isAlreadyWrote = this.ifReviewIsExist();
+      console.log(this.reviews);
+      console.log('isAlreadyWrote', this.isAlreadyWrote);
+    });
     const user = JSON.parse(window.localStorage.getItem('user'));
     this.isAuth = !!user;
+
+    console.log('auth', this.isAuth);
   }
 
   ngAfterViewChecked(): void {
@@ -56,6 +68,12 @@ export class WriteReviewComponent implements OnInit, AfterViewChecked {
     };
     this.documentForm.reset();
     this.reviewService.addReview(review);
+    this.isAlreadyWrote = true;
+  }
+
+  ifReviewIsExist() {
+    const uid = JSON.parse(window.localStorage.getItem('user')).uid;
+    return this.reviews.filter(review => review.userID === uid).length !== 0;
   }
 
 }
