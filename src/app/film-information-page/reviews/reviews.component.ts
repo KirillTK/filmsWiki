@@ -14,9 +14,7 @@ export class ReviewsComponent implements OnInit {
   @Input() idFilm: string;
 
 
-  constructor(private reviewService: ReviewService) {
-    console.log(this.reviews);
-  }
+  constructor(private reviewService: ReviewService) {}
 
   ngOnInit() {
     this.reviewService.getReviewById(this.idFilm)
