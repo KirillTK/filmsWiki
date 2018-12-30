@@ -36,7 +36,6 @@ export class ChartFilmComponent implements OnInit {
     this.sumReviews = this.countPositiveReviews + this.countNegativeReviews;
     this.likeWidth = Math.round((this.countPositiveReviews / this.sumReviews * 100)) + '%';
     this.dislikeWidth = Math.round((this.countNegativeReviews / this.sumReviews * 100)) + '%';
-    console.log(this.likeWidth, this.dislikeWidth);
   }
 
   private getCountPositiveReviews(reviews: Review[]) {

@@ -60,7 +60,7 @@ export class ReviewService {
 
   updateReview(review: Review) {
     const reviewElem = this.db.doc(`reviews/${review.id}`);
-    reviewElem.update({review: review.review});
+    reviewElem.update({review: review.review, opinion : review.opinion});
   }
 
   // Remove this methods
