@@ -43,9 +43,9 @@ export class YouReviewsPageComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result){
-        review.review = result;
+        review.review = result.text;
+        review.opinion = result.opinion;
         this.reviewService.updateReview(review);
-        console.log(result);
       }
     });
   }
