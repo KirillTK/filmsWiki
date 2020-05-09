@@ -13,7 +13,7 @@ export class AppComponent {
   public authenticated = false;
   public isWaiting = false;
 
-  constructor(private a: AngularFireAuth, private afAuth: AuthService) {
+  constructor(private a: AngularFireAuth, public afAuth: AuthService) {
     this.a.authState
       .subscribe((authentic) => {
         if (authentic != null) {
@@ -29,7 +29,7 @@ export class AppComponent {
     this.isWaiting = true;
     this.afAuth.loginInWithGoogle().then(() => {
       this.isWaiting = false;
-    }).catch( ()=> {
+    }).catch( () => {
       this.authenticated = false;
     });
   }
