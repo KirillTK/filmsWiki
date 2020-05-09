@@ -1,9 +1,0 @@
-<div class="container">
-  <mat-spinner *ngIf="!isLoaded"></mat-spinner>
-  <div *ngIf="isLoaded">
-    <canvas baseChart
-            [data]="doughnutChartData"
-            [labels]="doughnutChartLabels"
-            [chartType]="doughnutChartType"></canvas>
-  </div>
-</div>
